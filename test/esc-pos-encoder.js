@@ -161,6 +161,14 @@ describe('EscPosEncoder', function() {
 
     describe('qrcode(https://nielsleenheer.com)', function () {
         let result = encoder.qrcode('https://nielsleenheer.com').encode();
+
+        let byteArray = [...result];
+
+
+        // Use btoa to encode the byte array to a base64 stringc
+        let base64String = btoa(String.fromCharCode(...byteArray));
+
+        console.log("QR Code 1: " + base64String);
         
         it('should be [ 10, 29, 40, 107, 4, 0, 49, 65, 50, 0, 29, 40, 107, 3, 0, ... ]', function () {
             assert.deepEqual(new Uint8Array([ 10, 29, 40, 107, 4, 0, 49, 65, 50, 0, 29, 40, 107, 3, 0, 49, 67, 6, 29, 40, 107, 3, 0, 49, 69, 49, 29, 40, 107, 28, 0, 49, 80, 48, 104, 116, 116, 112, 115, 58, 47, 47, 110, 105, 101, 108, 115, 108, 101, 101, 110, 104, 101, 101, 114, 46, 99, 111, 109, 29, 40, 107, 3, 0, 49, 81, 48 ]), result);
@@ -169,6 +177,14 @@ describe('EscPosEncoder', function() {
 
     describe('qrcode(https://nielsleenheer.com, 1, 8, h)', function () {
         let result = encoder.qrcode('https://nielsleenheer.com', 1, 8, 'h').encode();
+
+        let byteArray = [...result];
+
+
+        // Use btoa to encode the byte array to a base64 stringc
+        let base64String = btoa(String.fromCharCode(...byteArray));
+
+        console.log("QR Code 1: " + base64String);
         
         it('should be [ 10, 29, 40, 107, 4, 0, 49, 65, 49, 0, 29, 40, 107, 3, 0, ... ]', function () {
             assert.deepEqual(new Uint8Array([ 10, 29, 40, 107, 4, 0, 49, 65, 49, 0, 29, 40, 107, 3, 0, 49, 67, 8, 29, 40, 107, 3, 0, 49, 69, 51, 29, 40, 107, 28, 0, 49, 80, 48, 104, 116, 116, 112, 115, 58, 47, 47, 110, 105, 101, 108, 115, 108, 101, 101, 110, 104, 101, 101, 114, 46, 99, 111, 109, 29, 40, 107, 3, 0, 49, 81, 48 ]), result);
